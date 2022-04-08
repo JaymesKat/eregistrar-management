@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head-elements :: headElements">
+  <title>eRegistrar Management system - Edit Student</title>
+</head>
+<body>
+<header th:replace="fragments/header-elements :: headerElements"/>
+  <div class="container mt-2">
+
+    <div style="width: 100%;" class="m-3 p-3 d-inline-block">
+      <h3 style="display: inline;">Edit Student details</h3>
+      </div>
+    <div style="font-size: 1em">
+
+      <form method="post" class="needs-validation" novalidate action="/eregistrar/students/save" th:object="${student}">
+        <ul th:if="${#fields.hasErrors('*')}">
+          <li th:each="error : ${#fields.errors('*')}" th:text="${error}">error</li>
+        </ul>
+        <input type="hidden" class="form-control" id="studentId" name="studentId"  value="" required th:value="${student.studentId}">
+
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="firstName">First name *</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name" value="" required th:value="${student.firstName}">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="middleName">Middle name</label>
+            <input type="text" class="form-control" id="middleName" name="middleName"  placeholder="Middle name" value="" th:value="${student.middleName}">
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="lastName">Last name *</label>
+            <input type="text" class="form-control" id="lastName"  name="lastName"  placeholder="Last name" value=""  th:value="${student.lastName}" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="studentNumber">Student number *</label>
+            <input type="text" class="form-control" id="studentNumber"  name="studentNumber" placeholder="Student number" required  th:value="${student.studentNumber}">
+            <div class="invalid-feedback">
+              Please enter a student number.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="studentNumber">CGPA</label>
+            <input type="text" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA" required  th:value="${student.cgpa}">
+            <div class="invalid-feedback">
+              Please enter the cgpa.
+            </div>
+          </div>
+          <div class="col-md-4 mb-3" data-provide="datepicker">
+            <label for="enrollmentDate">Enrollment date *</label>
+            <input type="date" class="form-control date" id="enrollmentDate" name="enrollmentDate"  placeholder="Enrollment date" required   th:value="${student.enrollmentDate}">
+            <div class="invalid-feedback">
+              Please enter a valid date.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <div class="form-check form-check-inline">
+              <label class="form-check-label m-2" for="yes">Is international student: Yes </label>
+              <input class="form-check-input" type="radio" name="isInternational" th:checked="${student.isInternational}" id="yes" value="true">
+            </div>
+            <div class="form-check form-check-inline">
+              <label class="form-check-label m-2" for="no">No </label>
+              <input class="form-check-input" type="radio" name="isInternational" th:checked="${!student.isInternational}" id="no" value="false">
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+      </form>
+<!--      <script>-->
+<!--        // Example starter JavaScript for disabling form submissions if there are invalid fields-->
+<!--        (function() {-->
+<!--          'use strict';-->
+<!--          window.addEventListener('load', function() {-->
+<!--            // Fetch all the forms we want to apply custom Bootstrap validation styles to-->
+<!--            var forms = document.getElementsByClassName('needs-validation');-->
+<!--            // Loop over them and prevent submission-->
+<!--            var validation = Array.prototype.filter.call(forms, function(form) {-->
+<!--              form.addEventListener('submit', function(event) {-->
+<!--                if (form.checkValidity() === false) {-->
+<!--                  event.preventDefault();-->
+<!--                  event.stopPropagation();-->
+<!--                }-->
+<!--                form.classList.add('was-validated');-->
+<!--              }, false);-->
+<!--            });-->
+<!--          }, false);-->
+<!--        })();-->
+<!--      </script>-->
+
+    </div>
+  </div>
+
+  <footer th:replace="fragments/footer-elements :: footerElements"></footer>
+<!--  <script>-->
+<!--    $(".date").datepicker({-->
+<!--      format: "yyyy-mm-dd",-->
+<!--    });-->
+<!--  </script>-->
+</body>
+

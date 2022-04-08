@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head-elements :: headElements">
+    <title>eRegistrar Management system - Home</title>
+</head>
+<body>
+<header th:replace="fragments/header-elements :: headerElements"/>
+
+<div class="container">
+    <div style="width: 100%;" class="m-3 p-3 d-inline-block">
+        <h3 style="display: inline;">List of Students</h3>
+        <span style="float: right;">
+            <a class="btn btn-outline-primary btn-lg" href="/eregistrar/students/new">
+                <i class="fa-solid fa-user"></i> Add a New Student
+            </a>
+        </span>
+    </div>
+    <div style="font-size: 1em">
+        <table class="table table-striped table-bordered table-hover table-responsive-md">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Number</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Middle Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">CGPA</th>
+                <th scope="col">Enrollment Date</th>
+                <th scope="col">International Student</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student,iterStat : ${students}">
+                <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
+                <th scope="row" th:text="${iterStat.count}+${'.'}"></th>
+                <td th:text="${student.studentNumber}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.middleName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.cgpa}"></td>
+                <td th:text="${student.enrollmentDate}"></td>
+                <td th:text="${student.isInternational? 'yes':'no'}"></td>
+                <td>
+                    <a th:href="@{'/eregistrar/students/edit/{studentId}'(studentId=${student.studentId})}">
+                        <i class="fa-regular fa-pen-to-square"></i> Edit
+                    </a>
+                </td>
+                <td>
+                    <a th:href="@{'/eregistrar/students/delete/{studentId}'(studentId=${student.studentId})}">
+                        <i class="fa-solid fa-delete-left"></i> Delete
+                    </a>
+                    <!--                        <a data-toggle="modal" data-target="#confirmDeleteBookModal" th:href="@{'/elibrary/book/delete/' + ${book.bookId}}">Delete</a>-->
+                    <!--                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">-->
+                    <!--                            Launch demo modal-->
+                    <!--                        </button>-->
+                </td>
+            </tr>
+            <tr th:if="${students.size() < 1}">
+                <td colspan="10" th:align="center">No students found</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<footer th:replace="fragments/footer-elements :: footerElements"></footer>
+</body>
+
