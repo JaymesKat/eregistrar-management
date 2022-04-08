@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/cs425-swe-projects.iml" filepath="$PROJECT_DIR$/cs425-swe-projects.iml" />
-      <module fileurl="file://$PROJECT_DIR$/eregistrar/eregistrar.iml" filepath="$PROJECT_DIR$/eregistrar/eregistrar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fairfieldlibrarywebapp/fairfieldlibrarywebapp.iml" filepath="$PROJECT_DIR$/fairfieldlibrarywebapp/fairfieldlibrarywebapp.iml" />
-      <module fileurl="file://$USER_HOME$/Downloads/lesson10_springwebmvc_fairfieldlibrarywebapp/fairfieldlibrarywebapp (1).iml" filepath="$USER_HOME$/Downloads/lesson10_springwebmvc_fairfieldlibrarywebapp/fairfieldlibrarywebapp (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/eregistrar.iml" filepath="$PROJECT_DIR$/eregistrar.iml" />
     </modules>
   </component>
 </project>
